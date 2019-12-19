@@ -5,6 +5,10 @@ import backtype.storm.topology.TopologyBuilder;
 
 import stormapplied.flashsale.topology.*;
 
+/**
+ * 创建抢购的topology
+ *   1个spout，4个bolt组成随机分组的流式策略
+ */
 public class FlashSaleTopologyBuilder {
   private static final String CUSTOMER_RETRIEVAL_SPOUT = "customer-retrieval";
   private static final String FIND_RECOMMENDED_SALES_FAST = "find-recommended-sales-fast";

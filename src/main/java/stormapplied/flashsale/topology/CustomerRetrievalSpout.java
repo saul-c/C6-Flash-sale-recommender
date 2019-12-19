@@ -17,6 +17,9 @@ import backtype.storm.utils.Utils;
 
 import stormapplied.flashsale.services.LatencySimulator;
 
+/**
+ * 客户spout数据源
+ */
 public class CustomerRetrievalSpout extends BaseRichSpout {
   private SpoutOutputCollector outputCollector;
   private final Random idGenerator = new Random();

@@ -33,6 +33,7 @@ public class SaveRecommendedSales extends BaseBasicBolt {
     List<Sale> sales = (List<Sale>) tuple.getValueByField("sales");
 
     try {
+      //将查询的推荐商品详情保存到数据库
       dbClient.save(customerId, sales);
     } catch (Timeout e) {
       throw new ReportedFailedException(e);

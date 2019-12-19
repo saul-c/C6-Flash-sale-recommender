@@ -4,6 +4,9 @@ import backtype.storm.metric.api.IMetric;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 指标接收器
+ */
 public class MultiSuccessRateMetric implements IMetric {
   Map<String, SuccessRateMetric> rates = new HashMap();
 

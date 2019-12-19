@@ -15,6 +15,10 @@ import java.util.Map;
 import stormapplied.flashsale.services.FlashSaleRecommendationClient;
 import stormapplied.flashsale.services.Timeout;
 
+/**
+ * 查找推荐的商品
+ *
+ */
 public class FindRecommendedSales extends BaseBasicBolt {
   public static final String RETRY_STREAM = "retry";
   public static final String SUCCESS_STREAM = "success";
@@ -34,10 +38,11 @@ public class FindRecommendedSales extends BaseBasicBolt {
     String customerId = tuple.getStringByField("customer");
 
     try {
+      //接收spout发送的用户，并查找推荐的商品
       List<String> sales = client.findSalesFor(customerId);
       if (!sales.isEmpty()) {
-        outputCollector.emit(SUCCESS_STREAM,
-                             new Values(customerId, sales));
+        //将查找的推荐商品列表推送一个元祖
+        outputCollector.emit(SUCCESS_STREAM,new Values(customerId, sales));
       }
     } catch (Timeout e) {
       outputCollector.emit(RETRY_STREAM, new Values(customerId));

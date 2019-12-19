@@ -4,6 +4,9 @@ import backtype.storm.metric.api.IMetric;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 成功指标率
+ */
 public class SuccessRateMetric implements IMetric {
   double success;
   double fail;
